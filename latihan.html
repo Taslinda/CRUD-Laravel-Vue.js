@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="button" value="Click Me!" onclick="panggilData()">
+
+    <script>
+        fetch("http://127.0.0.1:8000/identitas").then(function (response) {
+            return response.json();
+        }).then(function (data) {
+
+            document.write('<table border=1>');
+            for (x in data) {
+                document.write("<tr>");
+                document.write("<td>" + data[x].nama + "<td>");
+                document.write("<td>" + data[x].alamat + "<td>");
+                document.write("<td>" + data[x].nim + "<td>");
+                document.write("<tr>");
+            }
+            document.write("</table>");
+        }).catch(function (error) {
+            console.log(error);
+        });
+
+    </script>
+</body>
+
+</html>
